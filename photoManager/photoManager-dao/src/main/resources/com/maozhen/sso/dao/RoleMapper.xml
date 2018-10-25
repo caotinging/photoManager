@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.maozhen.sso.dao.RoleMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.maozhen.sso.model.Role">
+        <id column="id" property="id"/>
+        <result column="role_name" property="roleName"/>
+        <result column="creator_user_id" property="creatorUserId"/>
+        <result column="creator" property="creator"/>
+        <result column="modified_by_user_id" property="modifiedByUserId"/>
+        <result column="modified_by" property="modifiedBy"/>
+        <result column="is_deleted" property="isDeleted"/>
+        <result column="gmt_create" property="gmtCreate"/>
+        <result column="gmt_modified" property="gmtModified"/>
+    </resultMap>
+
+    <!-- 根据用户查询角色列表 -->
+    <select id="getRolesByUser" parameterType="Long" resultMap="BaseResultMap">
+        SELECT r.* FROM t_role r,t_user_role ur
+        WHERE ur.user_id=#{userId}
+        AND r.id=ur.role_id
+        AND r.is_deleted=0
+    </select>
+
+</mapper>

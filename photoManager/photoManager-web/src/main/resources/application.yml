@@ -1,0 +1,37 @@
+##### spring #####
+spring:
+  profiles:
+    active: @profiles.active@
+  main:
+    banner-mode: "console"
+  application:
+    name: photoManager-web
+  output:
+    ansi:
+      enabled: always
+  http:
+    converters:
+      preferred-json-mapper: fastjson
+  devtools:
+    restart:
+      enabled: true
+  redis:
+       host: localhost
+       port: 6379
+       password: 123456
+
+redis:
+   server:
+       host: localhost
+       port: 6379
+       password: 123456
+       maxIdle: 30
+       testOnBorrow: true
+       testOnReturn: true
+
+##### log #####
+logging:
+  level:
+    root: info
+    org.springframework.web: debug
+    com.hnpolice.messagepush: debug
