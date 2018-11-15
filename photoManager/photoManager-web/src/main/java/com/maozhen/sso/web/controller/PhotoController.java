@@ -46,6 +46,29 @@ public class PhotoController {
 	private ImageService imageService;
 	
 	/**
+	 * 查看相册详情
+	 * @param photoId
+	 * @return
+	 * 
+	 * @author caoting
+	 * @date 2018年11月13日
+	 */
+	@GetMapping("/listPhoto")
+	public ResponseModel listPhoto(Photo photo) {
+		ResponseModel res = new ResponseModel();
+		try {
+			// 通过相册id获取相册下所有照片
+			Photo data = imageService.listImage(photo);
+			res = ResponseModel.getSuccessResponseModel();
+			res.setData(data);
+			
+		} catch (Exception ex2) {
+			res = ResponseModel.getFailedResponseModel();
+		}
+		return res;
+	}
+	
+	/**
 	 * 更新用户相册
 	 * @return
 	 * 

@@ -32,6 +32,15 @@ public class Photo extends DataEntity<Photo> {
 	@TableField(exist = false)
 	private List<Carouse> carouselList;
 	
+	@TableField(exist = false)
+	private Integer imgSize;
+	
+	@TableField(exist = false)
+	private List<String> imageUrls;
+	
+	@TableField(exist = false)
+	private List<Image> imageList;
+	
 	@Override
 	protected Serializable pkVal() {
 		return this.id;
